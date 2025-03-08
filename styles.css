@@ -217,3 +217,50 @@ textarea {
     font-size: 14px;
     resize: none;
 }
+
+/* Browser Window Styles */
+#browser-window {
+    display: none; /* Hidden by default */
+}
+
+.browser-controls {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+#address-bar {
+    flex: 1;
+    padding: 4px;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 14px;
+    border: 2px solid #fff;
+    border-right-color: #808080;
+    border-bottom-color: #808080;
+}
+
+.browser-controls button {
+    padding: 4px 8px;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 14px;
+    background-color: #c0c0c0;
+    border: 2px solid #fff;
+    border-right-color: #808080;
+    border-bottom-color: #808080;
+    cursor: pointer;
+}
+
+.browser-controls button:active {
+    border: 2px solid #808080;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+}
+
+#browser-iframe {
+    width: 100%;
+    height: calc(100% - 50px); /* Adjust height to fit window */
+    border: 2px solid #fff;
+    border-right-color: #808080;
+    border-bottom-color: #808080;
+    background-color: #fff;
+}
