@@ -256,11 +256,22 @@ textarea {
     border-bottom-color: #fff;
 }
 
-#browser-iframe {
-    width: 100%;
-    height: calc(100% - 50px); /* Adjust height to fit window */
-    border: 2px solid #fff;
-    border-right-color: #808080;
-    border-bottom-color: #808080;
-    background-color: #fff;
+/* Warning Message Styles */
+#browser-window .content p {
+    text-align: center;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 12px;
+    color: #000;
+    margin-top: 10px;
+}
+
+#browser-window .content p strong {
+    font-weight: bold;
+}
+
+#browser-window .content p code {
+    font-family: monospace;
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border: 1px solid #808080;
 }
