@@ -25,20 +25,20 @@ body {
     left: 20px;
     text-align: center;
     cursor: pointer;
-    width: 64px; /* Adjust as needed */
+    width: 90px; /* 1.4x width (from 64px to 90px) */
 }
 
 .shortcut-icon {
-    width: 32px; /* Icon size */
-    height: 32px;
+    width: 45px; /* 1.4x icon size (from 32px to 45px) */
+    height: 45px;
     display: block;
     margin: 0 auto;
 }
 
 .shortcut-label {
     display: block;
-    margin-top: 4px;
-    font-size: 12px;
+    margin-top: 6px; /* Adjusted margin to match larger icon */
+    font-size: 13px; /* Slightly increased font size (from 12px to 13px) */
     color: #fff;
     text-shadow: 1px 1px 2px #000;
 }
