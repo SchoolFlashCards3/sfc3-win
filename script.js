@@ -16,3 +16,25 @@ document.addEventListener('click', (event) => {
         startMenu.style.display = 'none';
     }
 });
+
+// Text Editor Functions
+function openTextEditor() {
+    const textEditorWindow = document.getElementById('text-editor-window');
+    textEditorWindow.style.display = 'block';
+}
+
+function closeTextEditor() {
+    const textEditorWindow = document.getElementById('text-editor-window');
+    textEditorWindow.style.display = 'none';
+}
+
+// About Window Functions
+function openAboutWindow() {
+    const aboutWindow = document.getElementById('about-window');
+    aboutWindow.style.display = 'block';
+}
+
+function closeAboutWindow() {
+    const aboutWindow = document.getElementById('about-window');
+    aboutWindow.style.display = 'none';
+}
