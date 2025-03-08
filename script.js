@@ -52,7 +52,6 @@ function closeBrowser() {
 
 function loadWebsite() {
     const addressBar = document.getElementById('address-bar');
-    const iframe = document.getElementById('browser-iframe');
     const url = addressBar.value.trim();
 
     // Ensure the URL starts with http:// or https://
@@ -61,8 +60,8 @@ function loadWebsite() {
         return;
     }
 
-    // Load the URL into the iframe
-    iframe.src = url;
+    // Open the URL in a new tab
+    window.open(url, '_blank');
 }
 
 // Clock Function
