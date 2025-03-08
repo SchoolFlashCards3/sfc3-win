@@ -18,18 +18,43 @@ body {
     position: relative;
 }
 
+/* Shortcut Styles */
+.shortcut {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-align: center;
+    cursor: pointer;
+    width: 64px; /* Adjust as needed */
+}
+
+.shortcut-icon {
+    width: 32px; /* Icon size */
+    height: 32px;
+    display: block;
+    margin: 0 auto;
+}
+
+.shortcut-label {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+}
+
 /* Taskbar */
 .taskbar {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 30px;
+    height: 36px; /* Increased height by 6px (from 30px to 36px) */
     background-color: #c0c0c0;
     border-top: 2px solid #fff;
     display: flex;
     align-items: center;
-    padding-left: 5px;
+    padding-left: 2px; /* Reduced padding-left to move Start button slightly left */
 }
 
 /* Start Button */
@@ -38,10 +63,14 @@ body {
     border: 2px solid #fff;
     border-right-color: #808080;
     border-bottom-color: #808080;
-    padding: 2px 6px;
+    padding: 4px 10px; /* Increased padding to stretch the button */
     font-family: 'MS Sans Serif', sans-serif;
-    font-size: 14px;
+    font-size: 15px; /* Increased font size (from 14px to 15px) */
+    font-weight: bold; /* Added bold text */
     cursor: pointer;
+    margin-left: 2px; /* Added margin-left to move Start button slightly left */
+    height: 28px; /* Increased height to stretch the button upward */
+    width: 60px; /* Increased width to stretch the button to the right and left */
 }
 
 #start-button:active {
@@ -54,7 +83,7 @@ body {
 .start-menu-content {
     display: none;
     position: absolute;
-    bottom: 30px;
+    bottom: 36px; /* Adjusted to match new taskbar height */
     left: 0;
     background-color: #c0c0c0;
     border: 2px solid #fff;
@@ -79,4 +108,71 @@ body {
 .start-menu-content ul li:hover {
     background-color: #000080;
     color: #fff;
+}
+
+/* Window Styles */
+.window {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 400px;
+    height: 300px;
+    background-color: #c0c0c0;
+    border: 2px solid #fff;
+    border-right-color: #808080;
+    border-bottom-color: #808080;
+    display: none; /* Hidden by default */
+}
+
+.title-bar {
+    background-color: #000080;
+    color: #fff;
+    padding: 2px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    gap: 2px;
+}
+
+.buttons button {
+    width: 16px;
+    height: 14px;
+    background-color: #c0c0c0;
+    border: 1px solid #fff;
+    border-right-color: #808080;
+    border-bottom-color: #808080;
+    cursor: pointer;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    padding: 0;
+}
+
+.buttons button:active {
+    border: 1px solid #808080;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+}
+
+.content {
+    padding: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 240px;
+    background-color: #fff;
+    border: 1px solid #808080;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 14px;
+    resize: none;
 }
