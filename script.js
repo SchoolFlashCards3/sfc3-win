@@ -39,6 +39,32 @@ function closeAboutWindow() {
     aboutWindow.style.display = 'none';
 }
 
+// Browser Functions
+function openBrowser() {
+    const browserWindow = document.getElementById('browser-window');
+    browserWindow.style.display = 'block';
+}
+
+function closeBrowser() {
+    const browserWindow = document.getElementById('browser-window');
+    browserWindow.style.display = 'none';
+}
+
+function loadWebsite() {
+    const addressBar = document.getElementById('address-bar');
+    const iframe = document.getElementById('browser-iframe');
+    const url = addressBar.value.trim();
+
+    // Ensure the URL starts with http:// or https://
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        alert('Please enter a valid URL (e.g., https://example.com)');
+        return;
+    }
+
+    // Load the URL into the iframe
+    iframe.src = url;
+}
+
 // Clock Function
 function updateClock() {
     const clock = document.getElementById('clock');
