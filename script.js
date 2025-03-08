@@ -64,6 +64,40 @@ function loadWebsite() {
     window.open(url, '_blank');
 }
 
+// Calculator Functions
+function openCalculator() {
+    const calculatorWindow = document.getElementById('calculator-window');
+    calculatorWindow.style.display = 'block';
+}
+
+function closeCalculator() {
+    const calculatorWindow = document.getElementById('calculator-window');
+    calculatorWindow.style.display = 'none';
+}
+
+function appendToDisplay(value) {
+    const display = document.getElementById('calculator-display');
+    if (display.textContent === '0') {
+        display.textContent = value;
+    } else {
+        display.textContent += value;
+    }
+}
+
+function clearDisplay() {
+    const display = document.getElementById('calculator-display');
+    display.textContent = '0';
+}
+
+function calculateResult() {
+    const display = document.getElementById('calculator-display');
+    try {
+        display.textContent = eval(display.textContent);
+    } catch (error) {
+        display.textContent = 'Error';
+    }
+}
+
 // Clock Function
 function updateClock() {
     const clock = document.getElementById('clock');
@@ -78,3 +112,28 @@ function updateClock() {
 // Update the clock every second
 setInterval(updateClock, 1000);
 updateClock(); // Initial call to display the time immediately
+
+// Draggable Windows
+let activeWindow = null;
+let offsetX = 0, offsetY = 0;
+
+document.querySelectorAll('.window').forEach(window => {
+    const titleBar = window.querySelector('.title-bar');
+
+    titleBar.addEventListener('mousedown', (e) => {
+        activeWindow = window;
+        offsetX = e.clientX - window.offsetLeft;
+        offsetY = e.clientY - window.offsetTop;
+    });
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (activeWindow) {
+        activeWindow.style.left = `${e.clientX - offsetX}px`;
+        activeWindow.style.top = `${e.clientY - offsetY}px`;
+    }
+});
+
+document.addEventListener('mouseup', () => {
+    activeWindow = null;
+});
