@@ -110,6 +110,33 @@ body {
     color: #fff;
 }
 
+/* Taskbar Icons */
+.taskbar-icons {
+    display: flex;
+    gap: 4px;
+    margin-left: 10px; /* Space between Start button and icons */
+}
+
+.taskbar-icon {
+    background-color: #c0c0c0;
+    border: 2px solid #fff;
+    border-right-color: #808080;
+    border-bottom-color: #808080;
+    padding: 2px 6px;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.taskbar-icon:active {
+    border: 2px solid #808080;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+}
+
 /* Clock */
 .clock {
     position: absolute;
