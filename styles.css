@@ -157,7 +157,7 @@ body {
     top: 50px;
     left: 50px;
     width: 400px;
-    height: 300px;
+    height: 340px; /* Increased height to fit the = button */
     background-color: #c0c0c0;
     border: 2px solid #fff;
     border-right-color: #808080;
