@@ -8,10 +8,10 @@
 </head>
 <body>
     <div class="desktop">
-        <!-- Text Editor Shortcut -->
+        <!-- Notepad Shortcut -->
         <div class="shortcut" onclick="openTextEditor()">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png" alt="Text Editor Icon" class="shortcut-icon">
-            <span class="shortcut-label">Text Editor</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png" alt="Notepad Icon" class="shortcut-icon">
+            <span class="shortcut-label">Notepad</span>
         </div>
 
         <!-- About Shortcut -->
@@ -20,10 +20,10 @@
             <span class="shortcut-label">About</span>
         </div>
 
-        <!-- Text Editor Window -->
+        <!-- Notepad Window -->
         <div class="window" id="text-editor-window">
             <div class="title-bar">
-                <div class="title">Text Editor</div>
+                <div class="title">Notepad</div>
                 <div class="buttons">
                     <button class="close" onclick="closeTextEditor()">X</button>
                 </div>
@@ -52,9 +52,18 @@
                 <button id="start-button">Start</button>
                 <div id="start-menu" class="start-menu-content">
                     <ul>
-                        <li onclick="openTextEditor()">Text Editor</li>
+                        <li onclick="openTextEditor()">Notepad</li>
                         <li onclick="openAboutWindow()">About</li>
                     </ul>
+                </div>
+            </div>
+            <!-- Taskbar Icons -->
+            <div class="taskbar-icons">
+                <div class="taskbar-icon" onclick="openTextEditor()">
+                    <span>Notepad</span>
+                </div>
+                <div class="taskbar-icon" onclick="openAboutWindow()">
+                    <span>About</span>
                 </div>
             </div>
             <!-- Clock -->
