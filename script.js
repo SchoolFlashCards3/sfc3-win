@@ -45,6 +45,37 @@ fileInput.addEventListener('change', (e) => {
     }
 });
 
+// Save Text File Function
+function saveTextFile() {
+    const textEditor = document.getElementById('text-editor');
+    const text = textEditor.value;
+
+    if (text.trim() === '') {
+        alert('The text area is empty. Please enter some text before saving.');
+        return;
+    }
+
+    // Create a Blob with the text content
+    const blob = new Blob([text], { type: 'text/plain' });
+
+    // Create a link element to trigger the download
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'document.txt'; // Default file name
+
+    // Append the link to the body (required for Firefox)
+    document.body.appendChild(link);
+
+    // Programmatically click the link to trigger the download
+    link.click();
+
+    // Remove the link from the DOM
+    document.body.removeChild(link);
+
+    // Clean up the URL object
+    URL.revokeObjectURL(link.href);
+}
+
 // About Window Functions
 function openAboutWindow() {
     const aboutWindow = document.getElementById('about-window');
