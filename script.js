@@ -56,7 +56,7 @@ function saveTextFile() {
     }
 
     // Create a Blob with the text content
-    const blob = new Blob([text], { type: 'text/plain' });
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
 
     // Create a link element to trigger the download
     const link = document.createElement('a');
@@ -74,6 +74,8 @@ function saveTextFile() {
 
     // Clean up the URL object
     URL.revokeObjectURL(link.href);
+
+    console.log('File download should have started.'); // Debugging
 }
 
 // About Window Functions
@@ -228,3 +230,112 @@ function resetWallpaper() {
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
 }
+
+// Snake Game Variables
+let canvas = document.getElementById('snake-canvas');
+let ctx = canvas.getContext('2d');
+let snake = [{ x: 10, y: 10 }]; // Initial snake position
+let food = { x: 5, y: 5 }; // Initial food position
+let direction = 'right'; // Initial direction
+let gameOver = false;
+const restartButton = document.getElementById('restart-button'); // Restart button
+
+// Snake Game Functions
+function drawSnake() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+
+    // Draw the snake
+    ctx.fillStyle = 'green';
+    snake.forEach(segment => {
+        ctx.fillRect(segment.x * 20, segment.y * 20, 20, 20); // Each segment is 20x20 pixels
+    });
+
+    // Draw the food
+    ctx.fillStyle = 'red';
+    ctx.fillRect(food.x * 20, food.y * 20, 20, 20);
+}
+
+function moveSnake() {
+    if (gameOver) return;
+
+    // Calculate the new head position
+    let head = { x: snake[0].x, y: snake[0].y };
+    if (direction === 'right') head.x++;
+    if (direction === 'left') head.x--;
+    if (direction === 'up') head.y--;
+    if (direction === 'down') head.y++;
+
+    // Check for collisions
+    if (head.x < 0 || head.x >= canvas.width / 20 || head.y < 0 || head.y >= canvas.height / 20 || snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+        gameOver = true;
+        restartButton.style.display = 'block'; // Show the restart button
+        return;
+    }
+
+    // Add the new head to the snake
+    snake.unshift(head);
+
+    // Check if the snake eats the food
+    if (head.x === food.x && head.y === food.y) {
+        placeFood(); // Place new food
+    } else {
+        snake.pop(); // Remove the tail
+    }
+
+    drawSnake();
+}
+
+function placeFood() {
+    food.x = Math.floor(Math.random() * (canvas.width / 20));
+    food.y = Math.floor(Math.random() * (canvas.height / 20));
+}
+
+// Handle keyboard input
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowUp' && direction !== 'down') direction = 'up';
+    if (e.key === 'ArrowDown' && direction !== 'up') direction = 'down';
+    if (e.key === 'ArrowLeft' && direction !== 'right') direction = 'left';
+    if (e.key === 'ArrowRight' && direction !== 'left') direction = 'right';
+});
+
+// Game Loop
+function gameLoop() {
+    if (!gameOver) {
+        moveSnake();
+        setTimeout(gameLoop, 100); // Adjust speed here (lower = faster)
+    }
+}
+
+// Open Snake Game
+function openSnake() {
+    const snakeWindow = document.getElementById('snake-window');
+    snakeWindow.style.display = 'block';
+    restartButton.style.display = 'none'; // Hide the restart button
+    restartSnake(); // Reset the game
+}
+
+// Close Snake Game
+function closeSnake() {
+    const snakeWindow = document.getElementById('snake-window');
+    snakeWindow.style.display = 'none';
+    gameOver = true; // Stop the game
+}
+
+// Restart Snake Game
+function restartSnake() {
+    gameOver = false;
+    snake = [{ x: 10, y: 10 }]; // Reset snake
+    direction = 'right'; // Reset direction
+    placeFood(); // Place initial food
+    restartButton.style.display = 'none'; // Hide the restart button
+    drawSnake(); // Redraw the initial state
+    gameLoop(); // Start the game loop
+}
+
+// Initialize the game when the window loads
+window.onload = () => {
+    // Ensure the canvas is properly initialized
+    canvas.width = 400;
+    canvas.height = 400;
+    drawSnake(); // Draw the initial state
+};
