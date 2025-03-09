@@ -317,3 +317,33 @@ textarea {
     font-size: 20px; /* Make the decimal point larger */
     font-weight: bold; /* Make the decimal point bold */
 }
+
+/* Context Menu Styles */
+.context-menu {
+    display: none;
+    position: absolute;
+    background-color: #c0c0c0;
+    border: 2px solid #fff;
+    border-right-color: #808080;
+    border-bottom-color: #808080;
+    padding: 2px;
+    z-index: 1000;
+}
+
+.context-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.context-menu ul li {
+    padding: 4px 20px;
+    cursor: pointer;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 14px;
+}
+
+.context-menu ul li:hover {
+    background-color: #000080;
+    color: #fff;
+}
