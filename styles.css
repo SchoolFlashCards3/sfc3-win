@@ -185,7 +185,7 @@ body {
 }
 
 .buttons button {
-    width: 16px;
+    width: 40px; /* Adjusted width for Save button */
     height: 14px;
     background-color: #c0c0c0;
     border: 1px solid #fff;
