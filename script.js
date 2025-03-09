@@ -28,6 +28,23 @@ function closeTextEditor() {
     textEditorWindow.style.display = 'none';
 }
 
+// Handle file upload
+const fileInput = document.getElementById('file-input');
+const textEditor = document.getElementById('text-editor');
+
+fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file && file.type === 'text/plain') {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            textEditor.value = event.target.result; // Display file content in the textarea
+        };
+        reader.readAsText(file);
+    } else {
+        alert('Please upload a valid .txt file.');
+    }
+});
+
 // About Window Functions
 function openAboutWindow() {
     const aboutWindow = document.getElementById('about-window');
