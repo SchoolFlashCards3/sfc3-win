@@ -156,8 +156,8 @@ body {
     position: absolute;
     top: 50px;
     left: 50px;
-    width: 400px;
-    height: 340px; /* Increased height to fit the = button */
+    width: 440px; /* Adjusted width to fit the Snake game */
+    height: 500px; /* Adjusted height to fit the Snake game */
     background-color: #c0c0c0;
     border: 2px solid #fff;
     border-right-color: #808080;
@@ -316,6 +316,41 @@ textarea {
 .calculator-buttons button[onclick*="appendToDisplay('.')"] {
     font-size: 20px; /* Make the decimal point larger */
     font-weight: bold; /* Make the decimal point bold */
+}
+
+/* Snake Window Styles */
+#snake-window {
+    display: none; /* Hidden by default */
+}
+
+#snake-canvas {
+    border: 2px solid #000;
+    background-color: #c0c0c0;
+    display: block;
+    margin: 10px auto; /* Center the canvas */
+}
+
+#restart-button {
+    display: none; /* Hidden by default */
+    margin: 10px auto; /* Center horizontally */
+    padding: 5px 10px;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 14px;
+    background-color: #c0c0c0;
+    border: 2px solid #fff;
+    border-right-color: #808080;
+    border-bottom-color: #808080;
+    cursor: pointer;
+    position: absolute; /* Position absolutely within the window */
+    left: 50%; /* Center horizontally */
+    top: 50%; /* Center vertically */
+    transform: translate(-50%, -50%); /* Offset to truly center */
+}
+
+#restart-button:active {
+    border: 2px solid #808080;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
 }
 
 /* Context Menu Styles */
