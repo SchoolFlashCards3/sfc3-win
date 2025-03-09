@@ -137,3 +137,46 @@ document.addEventListener('mousemove', (e) => {
 document.addEventListener('mouseup', () => {
     activeWindow = null;
 });
+
+// Right-click context menu
+const contextMenu = document.getElementById('context-menu');
+const wallpaperInput = document.getElementById('wallpaper-input');
+
+// Show context menu on right-click
+document.addEventListener('contextmenu', (e) => {
+    e.preventDefault(); // Prevent default right-click menu
+    contextMenu.style.display = 'block';
+    contextMenu.style.left = `${e.clientX}px`;
+    contextMenu.style.top = `${e.clientY}px`;
+});
+
+// Hide context menu on click outside
+document.addEventListener('click', () => {
+    contextMenu.style.display = 'none';
+});
+
+// Change Wallpaper
+function changeWallpaper() {
+    wallpaperInput.click(); // Trigger file input
+}
+
+// Handle file upload
+wallpaperInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            document.body.style.backgroundImage = `url('${event.target.result}')`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// Reset Wallpaper
+function resetWallpaper() {
+    document.body.style.backgroundImage = 'url("https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2Fe%2F6%2F7%2F3%2F1%2F4%2Fe6731493cd50103e3561288c33a6a589c9bf67ab.jpg&w=384&q=75")';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+}
