@@ -1,3 +1,15 @@
+// Password Check Function
+function checkCode() {
+    var code = document.getElementById("codeInput").value;
+    if (code === "98598") {
+        document.getElementById("protectedContent").style.display = "block"; // Show content
+        document.getElementById("codeForm").style.display = "none"; // Hide password form
+    } else {
+        alert("Incorrect code. Please try again.");
+    }
+    return false; // Prevent form submission
+}
+
 // Toggle Start Menu
 const startButton = document.getElementById('start-button');
 const startMenu = document.getElementById('start-menu');
@@ -37,7 +49,7 @@ fileInput.addEventListener('change', (e) => {
     if (file && file.type === 'text/plain') {
         const reader = new FileReader();
         reader.onload = (event) => {
-            textEditor.value = event.target.result; // Display file content in the textarea
+            textEditor.value = event.target.result;
         };
         reader.readAsText(file);
     } else {
@@ -55,27 +67,14 @@ function saveTextFile() {
         return;
     }
 
-    // Create a Blob with the text content
     const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-
-    // Create a link element to trigger the download
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'document.txt'; // Default file name
-
-    // Append the link to the body (required for Firefox)
+    link.download = 'document.txt';
     document.body.appendChild(link);
-
-    // Programmatically click the link to trigger the download
     link.click();
-
-    // Remove the link from the DOM
     document.body.removeChild(link);
-
-    // Clean up the URL object
     URL.revokeObjectURL(link.href);
-
-    console.log('File download should have started.'); // Debugging
 }
 
 // About Window Functions
@@ -104,13 +103,11 @@ function loadWebsite() {
     const addressBar = document.getElementById('address-bar');
     const url = addressBar.value.trim();
 
-    // Ensure the URL starts with http:// or https://
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
         alert('Please enter a valid URL (e.g., https://example.com)');
         return;
     }
 
-    // Open the URL in a new tab
     window.open(url, '_blank');
 }
 
@@ -155,13 +152,12 @@ function updateClock() {
     const hours = now.getHours();
     const minutes = now.getMinutes().toString().padStart(2, '0');
     const ampm = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = hours % 12 || 12; // Convert to 12-hour format
+    const formattedHours = hours % 12 || 12;
     clock.textContent = `${formattedHours}:${minutes} ${ampm}`;
 }
 
-// Update the clock every second
 setInterval(updateClock, 1000);
-updateClock(); // Initial call to display the time immediately
+updateClock();
 
 // Draggable Windows
 let activeWindow = null;
@@ -192,25 +188,22 @@ document.addEventListener('mouseup', () => {
 const contextMenu = document.getElementById('context-menu');
 const wallpaperInput = document.getElementById('wallpaper-input');
 
-// Show context menu on right-click
 document.addEventListener('contextmenu', (e) => {
-    e.preventDefault(); // Prevent default right-click menu
+    e.preventDefault();
     contextMenu.style.display = 'block';
     contextMenu.style.left = `${e.clientX}px`;
     contextMenu.style.top = `${e.clientY}px`;
 });
 
-// Hide context menu on click outside
 document.addEventListener('click', () => {
     contextMenu.style.display = 'none';
 });
 
 // Change Wallpaper
 function changeWallpaper() {
-    wallpaperInput.click(); // Trigger file input
+    wallpaperInput.click();
 }
 
-// Handle file upload
 wallpaperInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -234,23 +227,35 @@ function resetWallpaper() {
 // Snake Game Variables
 let canvas = document.getElementById('snake-canvas');
 let ctx = canvas.getContext('2d');
-let snake = [{ x: 10, y: 10 }]; // Initial snake position
-let food = { x: 5, y: 5 }; // Initial food position
-let direction = 'right'; // Initial direction
+let snake = [{ x: 10, y: 10 }];
+let food = { x: 5, y: 5 };
+let direction = 'right';
 let gameOver = false;
-const restartButton = document.getElementById('restart-button'); // Restart button
+let score = 0;
+const restartButton = document.getElementById('restart-button');
+
+// Load high score from localStorage
+let highScore = localStorage.getItem('snakeHighScore') || 0;
+
+// Display high score and current score
+const scoreDisplay = document.createElement('div');
+scoreDisplay.id = 'score-display';
+scoreDisplay.style.position = 'absolute';
+scoreDisplay.style.bottom = '30px'; // Adjusted to move up slightly
+scoreDisplay.style.left = '10px';
+scoreDisplay.style.color = 'black'; // Changed text color to black
+scoreDisplay.style.fontFamily = 'MS Sans Serif, sans-serif';
+scoreDisplay.style.fontSize = '16px';
+scoreDisplay.textContent = `Current Score: ${score} | High Score: ${highScore}`;
+document.getElementById('snake-window').appendChild(scoreDisplay);
 
 // Snake Game Functions
 function drawSnake() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-
-    // Draw the snake
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'green';
     snake.forEach(segment => {
-        ctx.fillRect(segment.x * 20, segment.y * 20, 20, 20); // Each segment is 20x20 pixels
+        ctx.fillRect(segment.x * 20, segment.y * 20, 20, 20);
     });
-
-    // Draw the food
     ctx.fillStyle = 'red';
     ctx.fillRect(food.x * 20, food.y * 20, 20, 20);
 }
@@ -258,28 +263,33 @@ function drawSnake() {
 function moveSnake() {
     if (gameOver) return;
 
-    // Calculate the new head position
     let head = { x: snake[0].x, y: snake[0].y };
     if (direction === 'right') head.x++;
     if (direction === 'left') head.x--;
     if (direction === 'up') head.y--;
     if (direction === 'down') head.y++;
 
-    // Check for collisions
     if (head.x < 0 || head.x >= canvas.width / 20 || head.y < 0 || head.y >= canvas.height / 20 || snake.some(segment => segment.x === head.x && segment.y === head.y)) {
         gameOver = true;
-        restartButton.style.display = 'block'; // Show the restart button
+        restartButton.style.display = 'block';
+
+        // Update high score if current score is higher
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem('snakeHighScore', highScore);
+            scoreDisplay.textContent = `Current Score: ${score} | High Score: ${highScore}`;
+        }
         return;
     }
 
-    // Add the new head to the snake
     snake.unshift(head);
 
-    // Check if the snake eats the food
     if (head.x === food.x && head.y === food.y) {
-        placeFood(); // Place new food
+        placeFood();
+        score++; // Increase score when food is eaten
+        scoreDisplay.textContent = `Current Score: ${score} | High Score: ${highScore}`;
     } else {
-        snake.pop(); // Remove the tail
+        snake.pop();
     }
 
     drawSnake();
@@ -290,7 +300,6 @@ function placeFood() {
     food.y = Math.floor(Math.random() * (canvas.height / 20));
 }
 
-// Handle keyboard input
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowUp' && direction !== 'down') direction = 'up';
     if (e.key === 'ArrowDown' && direction !== 'up') direction = 'down';
@@ -298,44 +307,41 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' && direction !== 'left') direction = 'right';
 });
 
-// Game Loop
 function gameLoop() {
     if (!gameOver) {
         moveSnake();
-        setTimeout(gameLoop, 100); // Adjust speed here (lower = faster)
+        setTimeout(gameLoop, 100);
     }
 }
 
-// Open Snake Game
 function openSnake() {
     const snakeWindow = document.getElementById('snake-window');
     snakeWindow.style.display = 'block';
-    restartButton.style.display = 'none'; // Hide the restart button
-    restartSnake(); // Reset the game
+    restartButton.style.display = 'none';
+    restartSnake();
 }
 
-// Close Snake Game
 function closeSnake() {
     const snakeWindow = document.getElementById('snake-window');
     snakeWindow.style.display = 'none';
-    gameOver = true; // Stop the game
+    gameOver = true;
 }
 
-// Restart Snake Game
 function restartSnake() {
     gameOver = false;
-    snake = [{ x: 10, y: 10 }]; // Reset snake
-    direction = 'right'; // Reset direction
-    placeFood(); // Place initial food
-    restartButton.style.display = 'none'; // Hide the restart button
-    drawSnake(); // Redraw the initial state
-    gameLoop(); // Start the game loop
+    snake = [{ x: 10, y: 10 }];
+    direction = 'right';
+    score = 0; // Reset score
+    placeFood();
+    restartButton.style.display = 'none';
+    scoreDisplay.textContent = `Current Score: ${score} | High Score: ${highScore}`;
+    drawSnake();
+    gameLoop();
 }
 
 // Initialize the game when the window loads
 window.onload = () => {
-    // Ensure the canvas is properly initialized
     canvas.width = 400;
     canvas.height = 400;
-    drawSnake(); // Draw the initial state
+    drawSnake();
 };
