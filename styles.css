@@ -25,11 +25,11 @@ body {
     left: 20px;
     text-align: center;
     cursor: pointer;
-    width: 90px; /* 1.4x width (from 64px to 90px) */
+    width: 90px;
 }
 
 .shortcut-icon {
-    width: 45px; /* 1.4x icon size (from 32px to 45px) */
+    width: 45px;
     height: 45px;
     display: block;
     margin: 0 auto;
@@ -37,8 +37,8 @@ body {
 
 .shortcut-label {
     display: block;
-    margin-top: 6px; /* Adjusted margin to match larger icon */
-    font-size: 13px; /* Slightly increased font size (from 12px to 13px) */
+    margin-top: 6px;
+    font-size: 13px;
     color: #fff;
     text-shadow: 1px 1px 2px #000;
 }
@@ -49,12 +49,12 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 36px; /* Increased height by 6px (from 30px to 36px) */
+    height: 36px;
     background-color: #c0c0c0;
     border-top: 2px solid #fff;
     display: flex;
     align-items: center;
-    padding-left: 2px; /* Reduced padding-left to move Start button slightly left */
+    padding-left: 2px;
 }
 
 /* Start Button */
@@ -63,14 +63,14 @@ body {
     border: 2px solid #fff;
     border-right-color: #808080;
     border-bottom-color: #808080;
-    padding: 4px 10px; /* Increased padding to stretch the button */
+    padding: 4px 10px;
     font-family: 'MS Sans Serif', sans-serif;
-    font-size: 15px; /* Increased font size (from 14px to 15px) */
-    font-weight: bold; /* Added bold text */
+    font-size: 15px;
+    font-weight: bold;
     cursor: pointer;
-    margin-left: 2px; /* Added margin-left to move Start button slightly left */
-    height: 28px; /* Increased height to stretch the button upward */
-    width: 60px; /* Increased width to stretch the button to the right and left */
+    margin-left: 2px;
+    height: 28px;
+    width: 60px;
 }
 
 #start-button:active {
@@ -83,7 +83,7 @@ body {
 .start-menu-content {
     display: none;
     position: absolute;
-    bottom: 36px; /* Adjusted to match new taskbar height */
+    bottom: 36px;
     left: 0;
     background-color: #c0c0c0;
     border: 2px solid #fff;
@@ -114,7 +114,7 @@ body {
 .taskbar-icons {
     display: flex;
     gap: 4px;
-    margin-left: 10px; /* Space between Start button and icons */
+    margin-left: 10px;
 }
 
 .taskbar-icon {
@@ -156,14 +156,29 @@ body {
     position: absolute;
     top: 50px;
     left: 50px;
-    width: 440px; /* Adjusted width to fit the Snake game */
-    height: 500px; /* Adjusted height to fit the Snake game */
     background-color: #c0c0c0;
     border: 2px solid #fff;
     border-right-color: #808080;
     border-bottom-color: #808080;
-    display: none; /* Hidden by default */
-    user-select: none; /* Prevent text selection while dragging */
+    display: none;
+    user-select: none;
+}
+
+/* Snake Window Specific Styles */
+#snake-window {
+    width: 440px;
+    height: 500px;
+}
+
+/* Other Windows */
+#text-editor-window,
+#about-window,
+#browser-window,
+#calculator-window {
+    width: auto;
+    height: auto;
+    max-width: 80vw;
+    max-height: 80vh;
 }
 
 .title-bar {
@@ -185,7 +200,7 @@ body {
 }
 
 .buttons button {
-    width: 40px; /* Adjusted width for Save button */
+    width: 40px;
     height: 14px;
     background-color: #c0c0c0;
     border: 1px solid #fff;
@@ -220,10 +235,6 @@ textarea {
 }
 
 /* Browser Window Styles */
-#browser-window {
-    display: none; /* Hidden by default */
-}
-
 .browser-controls {
     display: flex;
     gap: 5px;
@@ -255,26 +266,6 @@ textarea {
     border: 2px solid #808080;
     border-right-color: #fff;
     border-bottom-color: #fff;
-}
-
-/* Warning Message Styles */
-#browser-window .content p {
-    text-align: center;
-    font-family: 'MS Sans Serif', sans-serif;
-    font-size: 12px;
-    color: #000;
-    margin-top: 10px;
-}
-
-#browser-window .content p strong {
-    font-weight: bold;
-}
-
-#browser-window .content p code {
-    font-family: monospace;
-    background-color: #f0f0f0;
-    padding: 2px 4px;
-    border: 1px solid #808080;
 }
 
 /* Calculator Styles */
@@ -312,27 +303,17 @@ textarea {
     border-bottom-color: #fff;
 }
 
-/* Style for the decimal point button */
-.calculator-buttons button[onclick*="appendToDisplay('.')"] {
-    font-size: 20px; /* Make the decimal point larger */
-    font-weight: bold; /* Make the decimal point bold */
-}
-
-/* Snake Window Styles */
-#snake-window {
-    display: none; /* Hidden by default */
-}
-
+/* Snake Game Styles */
 #snake-canvas {
     border: 2px solid #000;
     background-color: #c0c0c0;
     display: block;
-    margin: 10px auto; /* Center the canvas */
+    margin: 10px auto;
 }
 
 #restart-button {
-    display: none; /* Hidden by default */
-    margin: 10px auto; /* Center horizontally */
+    display: none;
+    margin: 10px auto;
     padding: 5px 10px;
     font-family: 'MS Sans Serif', sans-serif;
     font-size: 14px;
@@ -341,10 +322,10 @@ textarea {
     border-right-color: #808080;
     border-bottom-color: #808080;
     cursor: pointer;
-    position: absolute; /* Position absolutely within the window */
-    left: 50%; /* Center horizontally */
-    top: 50%; /* Center vertically */
-    transform: translate(-50%, -50%); /* Offset to truly center */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #restart-button:active {
