@@ -6,22 +6,7 @@
     <title>Windows 95 Desktop</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-  <script>
-        function checkCode() {
-            var code = document.getElementById("codeInput").value;
-            if (code === "98598") {
-              
-                document.getElementById("protectedContent").style.display = "block";  // Show content
-                document.getElementById("codeForm").style.display = "none"; 
-            } else {
-                alert("Incorrect code. Please try again.");
-            }
-            return false;  // Prevent form submission
-        }
-    </script>
-</head>
 <body>
-
     <div id="codeForm">
         <h1 style="color: black">Welcome to SWIN Version 0.1! This is not currently open to the public, so stay tuned.</h1>
         <br><br>
@@ -34,181 +19,179 @@
     </div>
 
     <div id="protectedContent" style="display:none;">
-<body>
-    <div class="desktop">
-        <!-- Hidden file input for wallpaper upload -->
-        <input type="file" id="wallpaper-input" accept="image/*" style="display: none;">
+        <div class="desktop">
+            <!-- Hidden file input for wallpaper upload -->
+            <input type="file" id="wallpaper-input" accept="image/*" style="display: none;">
 
-        <!-- Right-click context menu -->
-        <div id="context-menu" class="context-menu">
-            <ul>
-                <li onclick="changeWallpaper()">Change Wallpaper</li>
-                <li onclick="resetWallpaper()">Reset Wallpaper</li>
-            </ul>
-        </div>
+            <!-- Right-click context menu -->
+            <div id="context-menu" class="context-menu">
+                <ul>
+                    <li onclick="changeWallpaper()">Change Wallpaper</li>
+                    <li onclick="resetWallpaper()">Reset Wallpaper</li>
+                </ul>
+            </div>
 
-        <!-- Notepad Shortcut -->
-        <div class="shortcut" onclick="openTextEditor()">
-            <img src="https://i.imgur.com/vtAHkaL.png" alt="Notepad Icon" class="shortcut-icon">
-            <span class="shortcut-label">Notepad</span>
-        </div>
+            <!-- Notepad Shortcut -->
+            <div class="shortcut" onclick="openTextEditor()">
+                <img src="https://i.imgur.com/vtAHkaL.png" alt="Notepad Icon" class="shortcut-icon">
+                <span class="shortcut-label">Notepad</span>
+            </div>
 
-        <!-- READ ME Shortcut -->
-        <div class="shortcut" onclick="openAboutWindow()" style="top: 120px;">
-            <img src="https://github.com/SchoolFlashCards3/swin/blob/main/imgs/questionskib-removebg-preview.png?raw=true" alt="READ ME Icon" class="shortcut-icon">
-            <span class="shortcut-label">READ ME</span>
-        </div>
+            <!-- READ ME Shortcut -->
+            <div class="shortcut" onclick="openAboutWindow()" style="top: 120px;">
+                <img src="https://github.com/SchoolFlashCards3/swin/blob/main/imgs/questionskib-removebg-preview.png?raw=true" alt="READ ME Icon" class="shortcut-icon">
+                <span class="shortcut-label">READ ME</span>
+            </div>
 
-        <!-- Browser Shortcut -->
-        <div class="shortcut" onclick="openBrowser()" style="top: 200px;">
-            <img src="https://i.imgur.com/NmKNtJV.png" alt="The Internet Icon" class="shortcut-icon">
-            <span class="shortcut-label">The Internet</span>
-        </div>
+            <!-- Browser Shortcut -->
+            <div class="shortcut" onclick="openBrowser()" style="top: 200px;">
+                <img src="https://i.imgur.com/NmKNtJV.png" alt="The Internet Icon" class="shortcut-icon">
+                <span class="shortcut-label">The Internet</span>
+            </div>
 
-        <!-- Calculator Shortcut -->
-        <div class="shortcut" onclick="openCalculator()" style="top: 280px;">
-            <img src="https://github.com/SchoolFlashCards3/swin/blob/main/imgs/wincalc-removebg-preview.png?raw=true" alt="Calculator Icon" class="shortcut-icon">
-            <span class="shortcut-label">Calculator</span>
-        </div>
+            <!-- Calculator Shortcut -->
+            <div class="shortcut" onclick="openCalculator()" style="top: 280px;">
+                <img src="https://github.com/SchoolFlashCards3/swin/blob/main/imgs/wincalc-removebg-preview.png?raw=true" alt="Calculator Icon" class="shortcut-icon">
+                <span class="shortcut-label">Calculator</span>
+            </div>
 
-        <!-- Snake Shortcut -->
-        <div class="shortcut" onclick="openSnake()" style="top: 360px;">
-            <img src="https://github.com/SchoolFlashCards3/swin/blob/main/imgs/winsnake-removebg-preview.png?raw=true" alt="Snake Icon" class="shortcut-icon">
-            <span class="shortcut-label">Snake</span>
-        </div>
+            <!-- Snake Shortcut -->
+            <div class="shortcut" onclick="openSnake()" style="top: 360px;">
+                <img src="https://github.com/SchoolFlashCards3/swin/blob/main/imgs/winsnake-removebg-preview.png?raw=true" alt="Snake Icon" class="shortcut-icon">
+                <span class="shortcut-label">Snake</span>
+            </div>
 
-        <!-- Notepad Window -->
-        <div class="window" id="text-editor-window">
-            <div class="title-bar">
-                <div class="title">Notepad</div>
-                <div class="buttons">
-                    <button class="save" onclick="saveTextFile()">Save to host</button>
-                    <button class="close" onclick="closeTextEditor()">X</button>
+            <!-- Notepad Window -->
+            <div class="window" id="text-editor-window">
+                <div class="title-bar">
+                    <div class="title">Notepad</div>
+                    <div class="buttons">
+                        <button class="save" onclick="saveTextFile()">Save to host</button>
+                        <button class="close" onclick="closeTextEditor()">X</button>
+                    </div>
+                </div>
+                <div class="content">
+                    <input type="file" id="file-input" accept=".txt" style="margin-bottom: 10px;">
+                    <textarea id="text-editor" placeholder="Start typing here..."></textarea>
                 </div>
             </div>
-            <div class="content">
-                <input type="file" id="file-input" accept=".txt" style="margin-bottom: 10px;">
-                <textarea id="text-editor" placeholder="Start typing here..."></textarea>
-            </div>
-        </div>
 
-        <!-- READ ME Window -->
-        <div class="window" id="about-window">
-            <div class="title-bar">
-                <div class="title">READ ME</div>
-                <div class="buttons">
-                    <button class="close" onclick="closeAboutWindow()">X</button>
+            <!-- READ ME Window -->
+            <div class="window" id="about-window">
+                <div class="title-bar">
+                    <div class="title">READ ME</div>
+                    <div class="buttons">
+                        <button class="close" onclick="closeAboutWindow()">X</button>
+                    </div>
+                </div>
+                <div class="content">
+                    <p>Welcome, this is SFC3's recreation of Windows. Some things: Right-click for extra options, you also don't have to double-click programs, only single-click. That's it for now, bye byes!</p>
                 </div>
             </div>
-            <div class="content">
-                <p>Welcome, this is SFC3's recreation of Windows. Some things: Right-click for extra options, you also don't have to double-click programs, only single-click. That's it for now, bye byes!</p>
-            </div>
-        </div>
 
-        <!-- Browser Window -->
-         <!-- Browser Window -->
-        <div class="window" id="browser-window">
-            <div class="title-bar">
-                <div class="title">Browser</div>
-                <div class="buttons">
-                    <button class="close" onclick="closeBrowser()">X</button>
+            <!-- Browser Window -->
+            <div class="window" id="browser-window">
+                <div class="title-bar">
+                    <div class="title">Browser</div>
+                    <div class="buttons">
+                        <button class="close" onclick="closeBrowser()">X</button>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="browser-controls">
+                        <input type="text" id="address-bar" placeholder="Enter URL (e.g., https://example.com)">
+                        <button onclick="loadWebsite()">Go</button>
+                    </div>
+                    <p style="text-align: center; font-family: 'MS Sans Serif', sans-serif;">
+                        <strong>Hey! Just so you know:</strong><br><br>
+                        All links must start with <code>http://</code> or <code>https://</code>.<br><br>
+                        For example, <code>https://example.com</code> works, but <code>example.com</code> does not.
+                    </p>
                 </div>
             </div>
-            <div class="content">
-                <div class="browser-controls">
-                    <input type="text" id="address-bar" placeholder="Enter URL (e.g., https://example.com)">
-                    <button onclick="loadWebsite()">Go</button>
-                </div>
-                <p style="text-align: center; font-family: 'MS Sans Serif', sans-serif;">
-                    <strong>Hey! Just so you know:</strong><br><br>
-                    All links must start with <code>http://</code> or <code>https://</code>.<br><br>
-                    For example, <code>https://example.com</code> works, but <code>example.com</code> does not.
-                </p>
-            </div>
-        </div>
 
-        <!-- Calculator Window -->
-        <div class="window" id="calculator-window">
-            <div class="title-bar">
-                <div class="title">Calculator</div>
-                <div class="buttons">
-                    <button class="close" onclick="closeCalculator()">X</button>
+            <!-- Calculator Window -->
+            <div class="window" id="calculator-window">
+                <div class="title-bar">
+                    <div class="title">Calculator</div>
+                    <div class="buttons">
+                        <button class="close" onclick="closeCalculator()">X</button>
+                    </div>
+                </div>
+                <div class="content">
+                    <div id="calculator-display">0</div>
+                    <div class="calculator-buttons">
+                        <button onclick="appendToDisplay('7')">7</button>
+                        <button onclick="appendToDisplay('8')">8</button>
+                        <button onclick="appendToDisplay('9')">9</button>
+                        <button onclick="appendToDisplay('+')">+</button>
+                        <button onclick="appendToDisplay('4')">4</button>
+                        <button onclick="appendToDisplay('5')">5</button>
+                        <button onclick="appendToDisplay('6')">6</button>
+                        <button onclick="appendToDisplay('-')">-</button>
+                        <button onclick="appendToDisplay('1')">1</button>
+                        <button onclick="appendToDisplay('2')">2</button>
+                        <button onclick="appendToDisplay('3')">3</button>
+                        <button onclick="appendToDisplay('*')">*</button>
+                        <button onclick="appendToDisplay('0')">0</button>
+                        <button onclick="appendToDisplay('.')">.</button>
+                        <button onclick="appendToDisplay('/')">/</button>
+                        <button onclick="clearDisplay()">C</button>
+                        <button onclick="calculateResult()">=</button>
+                    </div>
                 </div>
             </div>
-            <div class="content">
-                <div id="calculator-display">0</div>
-                <div class="calculator-buttons">
-                    <button onclick="appendToDisplay('7')">7</button>
-                    <button onclick="appendToDisplay('8')">8</button>
-                    <button onclick="appendToDisplay('9')">9</button>
-                    <button onclick="appendToDisplay('+')">+</button>
-                    <button onclick="appendToDisplay('4')">4</button>
-                    <button onclick="appendToDisplay('5')">5</button>
-                    <button onclick="appendToDisplay('6')">6</button>
-                    <button onclick="appendToDisplay('-')">-</button>
-                    <button onclick="appendToDisplay('1')">1</button>
-                    <button onclick="appendToDisplay('2')">2</button>
-                    <button onclick="appendToDisplay('3')">3</button>
-                    <button onclick="appendToDisplay('*')">*</button>
-                    <button onclick="appendToDisplay('0')">0</button>
-                    <button onclick="appendToDisplay('.')">.</button>
-                    <button onclick="appendToDisplay('/')">/</button>
-                    <button onclick="clearDisplay()">C</button>
-                    <button onclick="calculateResult()">=</button>
-                </div>
-            </div>
-        </div>
 
-        <!-- Snake Window -->
-        <div class="window" id="snake-window">
-            <div class="title-bar">
-                <div class="title">Snake</div>
-                <div class="buttons">
-                    <button class="close" onclick="closeSnake()">X</button>
+            <!-- Snake Window -->
+            <div class="window" id="snake-window">
+                <div class="title-bar">
+                    <div class="title">Snake</div>
+                    <div class="buttons">
+                        <button class="close" onclick="closeSnake()">X</button>
+                    </div>
+                </div>
+                <div class="content">
+                    <canvas id="snake-canvas" width="400" height="400"></canvas>
+                    <!-- Add the restart button (hidden by default) -->
+                    <button id="restart-button" onclick="restartSnake()" style="display: none;">Restart</button>
                 </div>
             </div>
-            <div class="content">
-                <canvas id="snake-canvas" width="400" height="400"></canvas>
-                <p>Use arrow keys to move the snake. Eat the food to grow!</p>
-                <!-- Add the restart button (hidden by default) -->
-                <button id="restart-button" onclick="restartSnake()" style="display: none;">Restart</button>
-            </div>
-        </div>
 
-        <!-- Taskbar -->
-        <div class="taskbar">
-            <div class="start-menu">
-                <button id="start-button">Start</button>
-                <div id="start-menu" class="start-menu-content">
-                    <ul>
-                        <li onclick="openTextEditor()">Notepad</li>
-                        <li onclick="openAboutWindow()">READ ME</li>
-                        <li onclick="openBrowser()">Browser</li>
-                        <li onclick="openCalculator()">Calculator</li>
-                        <li onclick="openSnake()">Snake</li>
-                    </ul>
+            <!-- Taskbar -->
+            <div class="taskbar">
+                <div class="start-menu">
+                    <button id="start-button">Start</button>
+                    <div id="start-menu" class="start-menu-content">
+                        <ul>
+                            <li onclick="openTextEditor()">Notepad</li>
+                            <li onclick="openAboutWindow()">READ ME</li>
+                            <li onclick="openBrowser()">Browser</li>
+                            <li onclick="openCalculator()">Calculator</li>
+                            <li onclick="openSnake()">Snake</li>
+                        </ul>
+                    </div>
                 </div>
+                <!-- Taskbar Icons -->
+                <div class="taskbar-icons">
+                    <div class="taskbar-icon" onclick="openTextEditor()">
+                        <span>Notepad</span>
+                    </div>
+                    <div class="taskbar-icon" onclick="openAboutWindow()">
+                        <span>READ ME</span>
+                    </div>
+                    <div class="taskbar-icon" onclick="openBrowser()">
+                        <span>Browser</span>
+                    </div>
+                    <div class="taskbar-icon" onclick="openCalculator()">
+                        <span>Calculator</span>
+                    </div>
+                    <div class="taskbar-icon" onclick="openSnake()">
+                        <span>Snake</span>
+                    </div>
+                </div>
+                <!-- Clock -->
+                <div id="clock" class="clock">12:00 PM</div>
             </div>
-            <!-- Taskbar Icons -->
-            <div class="taskbar-icons">
-                <div class="taskbar-icon" onclick="openTextEditor()">
-                    <span>Notepad</span>
-                </div>
-                <div class="taskbar-icon" onclick="openAboutWindow()">
-                    <span>READ ME</span>
-                </div>
-                <div class="taskbar-icon" onclick="openBrowser()">
-                    <span>Browser</span>
-                </div>
-                <div class="taskbar-icon" onclick="openCalculator()">
-                    <span>Calculator</span>
-                </div>
-                <div class="taskbar-icon" onclick="openSnake()">
-                    <span>Snake</span>
-                </div>
-            </div>
-            <!-- Clock -->
-            <div id="clock" class="clock">12:00 PM</div>
         </div>
     </div>
 
