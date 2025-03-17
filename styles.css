@@ -9,7 +9,6 @@ body {
     background-repeat: no-repeat;
     color: #000;
     overflow: hidden;
-    cursor: url('cursor.png'), auto; /* Add custom pixelated cursor */
 }
 
 /* Desktop */
@@ -25,7 +24,7 @@ body {
     top: 20px;
     left: 20px;
     text-align: center;
-    cursor: url('cursor.png'), auto; /* Custom cursor for shortcuts */
+    cursor: pointer;
     width: 90px;
 }
 
@@ -68,7 +67,7 @@ body {
     font-family: 'MS Sans Serif', sans-serif;
     font-size: 15px;
     font-weight: bold;
-    cursor: url('cursor.png'), auto; /* Custom cursor for start button */
+    cursor: pointer;
     margin-left: 2px;
     height: 28px;
     width: 60px;
@@ -103,7 +102,7 @@ body {
 
 .start-menu-content ul li {
     padding: 3px 10px;
-    cursor: url('cursor.png'), auto; /* Custom cursor for menu items */
+    cursor: pointer;
 }
 
 .start-menu-content ul li:hover {
@@ -126,7 +125,7 @@ body {
     padding: 2px 6px;
     font-family: 'MS Sans Serif', sans-serif;
     font-size: 14px;
-    cursor: url('cursor.png'), auto; /* Custom cursor for taskbar icons */
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -207,7 +206,7 @@ body {
     border: 1px solid #fff;
     border-right-color: #808080;
     border-bottom-color: #808080;
-    cursor: url('cursor.png'), auto; /* Custom cursor for window buttons */
+    cursor: pointer;
     font-family: 'MS Sans Serif', sans-serif;
     font-size: 12px;
     line-height: 12px;
@@ -260,7 +259,7 @@ textarea {
     border: 2px solid #fff;
     border-right-color: #808080;
     border-bottom-color: #808080;
-    cursor: url('cursor.png'), auto; /* Custom cursor for browser buttons */
+    cursor: pointer;
 }
 
 .browser-controls button:active {
@@ -295,7 +294,7 @@ textarea {
     border: 2px solid #fff;
     border-right-color: #808080;
     border-bottom-color: #808080;
-    cursor: url('cursor.png'), auto; /* Custom cursor for calculator buttons */
+    cursor: pointer;
 }
 
 .calculator-buttons button:active {
@@ -322,7 +321,7 @@ textarea {
     border: 2px solid #fff;
     border-right-color: #808080;
     border-bottom-color: #808080;
-    cursor: url('cursor.png'), auto; /* Custom cursor for restart button */
+    cursor: pointer;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -355,7 +354,7 @@ textarea {
 
 .context-menu ul li {
     padding: 4px 20px;
-    cursor: url('cursor.png'), auto; /* Custom cursor for context menu items */
+    cursor: pointer;
     font-family: 'MS Sans Serif', sans-serif;
     font-size: 14px;
 }
