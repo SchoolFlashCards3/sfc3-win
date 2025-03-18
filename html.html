@@ -61,6 +61,12 @@
                 <span class="shortcut-label">Snake</span>
             </div>
 
+            <!-- Placeholder Shortcut -->
+            <div class="shortcut" onclick="openPlaceholder()" style="top: 440px;">
+                <img src="https://cdn-icons-png.flaticon.com/128/7544/7544562.png" alt="Placeholder Icon" class="shortcut-icon">
+                <span class="shortcut-label">Placeholder</span>
+            </div>
+
             <!-- Notepad Window -->
             <div class="window" id="text-editor-window">
                 <div class="title-bar">
@@ -157,6 +163,24 @@
                 </div>
             </div>
 
+            <!-- Placeholder Window -->
+            <div class="window" id="placeholder-window">
+                <div class="title-bar">
+                    <div class="title">Placeholder</div>
+                    <div class="buttons">
+                        <button class="close" onclick="closePlaceholder()">X</button>
+                    </div>
+                </div>
+                <div class="content">
+                    <!-- Text above the text box -->
+                    <p style="margin: 5px 0; font-family: 'MS Sans Serif', sans-serif; font-size: 14px;">
+                        This is terminal. Type in your command and hit enter. Run the command /? for a list of commands and help.
+                    </p>
+                    <!-- Typing Box -->
+                    <textarea id="placeholder-input" placeholder="Type here..."></textarea>
+                </div>
+            </div>
+
             <!-- Taskbar -->
             <div class="taskbar">
                 <div class="start-menu">
@@ -168,6 +192,7 @@
                             <li onclick="openBrowser()">Browser</li>
                             <li onclick="openCalculator()">Calculator</li>
                             <li onclick="openSnake()">Snake</li>
+                            <li onclick="openPlaceholder()">Placeholder</li>
                         </ul>
                     </div>
                 </div>
@@ -187,6 +212,9 @@
                     </div>
                     <div class="taskbar-icon" onclick="openSnake()">
                         <span>Snake</span>
+                    </div>
+                    <div class="taskbar-icon" onclick="openPlaceholder()">
+                        <span>Placeholder</span>
                     </div>
                 </div>
                 <!-- Clock -->
