@@ -363,3 +363,27 @@ textarea {
     background-color: #000080;
     color: #fff;
 }
+
+/* Placeholder Window Styles */
+#placeholder-window {
+    width: 400px; /* Set width to 400px */
+    height: 350px; /* Set height to 350px */
+    left: 130px; /* Move 80px to the right (default is 50px + 40px + 40px) */
+}
+
+/* Typing Box Styles */
+#placeholder-input {
+    width: 100%; /* Full width */
+    height: calc(100% - 70px); /* Adjust height to account for text and title bar */
+    background-color: #fff;
+    border: 1px solid #808080;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 14px;
+    resize: none; /* Prevent resizing */
+    padding: 0; /* Remove padding */
+    box-sizing: border-box; /* Include border in width/height */
+    margin: 0; /* Remove margin */
+    position: absolute; /* Position absolutely within the window */
+    top: 70px; /* Start below the title bar and text */
+    left: 0;
+}
