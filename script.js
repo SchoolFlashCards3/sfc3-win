@@ -29,6 +29,74 @@ document.addEventListener('click', (event) => {
     }
 });
 
+// Placeholder App Functions
+function openPlaceholder() {
+    const placeholderWindow = document.getElementById('placeholder-window');
+    placeholderWindow.style.display = 'block';
+}
+
+function closePlaceholder() {
+    const placeholderWindow = document.getElementById('placeholder-window');
+    placeholderWindow.style.display = 'none';
+}
+
+// Placeholder App Functions
+function openPlaceholder() {
+    const placeholderWindow = document.getElementById('placeholder-window');
+    placeholderWindow.style.display = 'block';
+}
+
+function closePlaceholder() {
+    const placeholderWindow = document.getElementById('placeholder-window');
+    placeholderWindow.style.display = 'none';
+}
+
+// Handle typing box input
+const placeholderInput = document.getElementById('placeholder-input');
+placeholderInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault(); // Prevent newline in the textarea
+        const input = placeholderInput.value.trim(); // Get the input and remove extra spaces
+
+        // Handle commands
+        if (input.startsWith('/run ')) {
+            const app = input.split(' ')[1]; // Extract the app name
+            switch (app) {
+                case 'snake':
+                    openSnake(); // Open the Snake game
+                    closePlaceholder(); // Close the terminal
+                    break;
+                case 'browser':
+                    openBrowser(); // Open the Browser
+                    closePlaceholder(); // Close the terminal
+                    break;
+                case 'readme':
+                    openAboutWindow(); // Open the READ ME window
+                    closePlaceholder(); // Close the terminal
+                    break;
+                default:
+                    placeholderInput.value = `Unknown app: ${app}\nType /runinfo to see available apps.\n`;
+                    break;
+            }
+        } else {
+            switch (input) {
+                case '/?':
+                    placeholderInput.value = `Available commands:\n/? - Show this help message\n/about - About this app\n/run <app> - Run an app (e.g., /run snake)\n/runinfo - List of run commands for different apps\n`;
+                    break;
+                case '/about':
+                    placeholderInput.value = `This is the SWIN operating system.\nVersion 0.2\nCreated by SFC3.`;
+                    break;
+                case '/runinfo':
+                    placeholderInput.value = `Available apps to run:\n- Snake: /run snake\n- Browser: /run browser\n- READ ME: /run readme\n`;
+                    break;
+                default:
+                    alert('Incorrect or unknown command'); // Show alert for unknown commands
+                    break;
+            }
+        }
+    }
+});
+
 // Text Editor Functions
 function openTextEditor() {
     const textEditorWindow = document.getElementById('text-editor-window');
